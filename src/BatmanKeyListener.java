@@ -3,7 +3,7 @@ import java.awt.event.KeyListener;
 
 public class BatmanKeyListener implements KeyListener {
 
-    Object object;
+    private Object object;
 
     public BatmanKeyListener(Object object) {
         this.object = object;
@@ -19,7 +19,12 @@ public class BatmanKeyListener implements KeyListener {
         int keyKode = e.getKeyCode();
         if (object instanceof Batman) {
             if (keyKode >= 37 && keyKode <= 40)
-                ((Batman) object).speedUp(keyKode - 37); // 37, 38, 39, 40 is respectively LEFT, UP, RIGHT, DOWN
+                ((Batman) object).addVelocity(keyKode - 37); // 37, 38, 39, 40 is respectively LEFT, UP, RIGHT, DOWN
+
+            if (keyKode == KeyEvent.VK_W)
+                ((Batman) object).incrementSpeed();
+            else if (keyKode == KeyEvent.VK_S)
+                ((Batman) object).decrementSpeed();
         }
         else if (object instanceof MainFrame) {
             if (keyKode == KeyEvent.VK_BACK_SPACE) {

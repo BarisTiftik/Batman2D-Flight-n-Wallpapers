@@ -50,9 +50,25 @@ public class Batman
       location.setLocation( newX, newY );
    }
    
-   public void speedUp(int d)
+   public void addVelocity(int d)
    {      
       velocity.setLocation( vectors[d] );
+   }
+
+   public void incrementSpeed() {
+      if( speed <= 45 )
+         speed = speed + 5;
+      updateVectors(speed);
+   }
+
+   public void decrementSpeed() {
+      if( speed >= 5 )
+         speed = speed - 5;
+      updateVectors(speed);
+   }
+
+   public void updateVectors(int newSpeed) {
+      vectors = new Point[]{ new Point( -newSpeed, 0 ), new Point( 0, -newSpeed ), new Point( newSpeed, 0 ), new Point( 0, newSpeed ) };
    }
    
    public void stop() 

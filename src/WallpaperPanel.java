@@ -3,7 +3,7 @@ import javax.swing.event.MouseInputListener;
 import java.awt.*;
 import java.awt.event.*;
 
-public class WallpaperPanel extends JPanel implements MouseInputListener, ActionListener
+public class WallpaperPanel extends JPanel implements ActionListener
 {
    // properties
    private final int IMAGE_COUNT = 11;
@@ -14,6 +14,7 @@ public class WallpaperPanel extends JPanel implements MouseInputListener, Action
    private Timer timer;
 
    private KeyListener keyListener;
+   private MouseInputListener mouseInputListener;
    
    // constructors
    public WallpaperPanel()
@@ -22,6 +23,7 @@ public class WallpaperPanel extends JPanel implements MouseInputListener, Action
       backgroundImages = new Image[IMAGE_COUNT];
       imageIndex = 0;
       keyListener = new BatmanKeyListener(batman);
+      mouseInputListener = new BatmanMouseInputListener(this);
 
       for (int i = 0; i < backgroundImages.length; i++)
           backgroundImages[i] = Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("GothamCity" + (i+1) + ".jpg"));
@@ -30,8 +32,8 @@ public class WallpaperPanel extends JPanel implements MouseInputListener, Action
       timer.start();
 
       addKeyListener(keyListener);
-      addMouseListener( this );
-      addMouseMotionListener(this);
+      addMouseListener( mouseInputListener );
+      addMouseMotionListener(mouseInputListener);
       
       setFocusable( true ); // very important line
    }
@@ -53,46 +55,31 @@ public class WallpaperPanel extends JPanel implements MouseInputListener, Action
       repaint();
    }
 
-   public void mouseMoved( MouseEvent e )
-   {
-      batman.setBatmanLocation( e.getX() - ( batman.getBatmanImage().getWidth(null) / 2 ),
-              e.getY() - ( batman.getBatmanImage().getHeight(null) / 2 ) );
+   public Batman getBatman() {
+      return batman;
    }
 
-   public void mouseDragged(MouseEvent e)
-   {
-      batman.setBatmanLocation( e.getX() - ( batman.getBatmanImage().getWidth(null) / 2 ),
-              e.getY() - ( batman.getBatmanImage().getHeight(null) / 2 ) );
+   public int getImageIndex() {
+      return imageIndex;
    }
 
-   public void mouseClicked(MouseEvent e) {
+   public void resetImageIndex() {
+      if (imageIndex == backgroundImages.length - 1)
+         imageIndex = 0;
+      else if (imageIndex == 0)
+         imageIndex = backgroundImages.length - 1;
    }
 
-   public void mousePressed(MouseEvent e) {
-      if (e.getButton() == MouseEvent.BUTTON1) {
-         if (imageIndex == backgroundImages.length - 1)
-            imageIndex = 0;
-         else
-            imageIndex++;
-      }
-      else if (e.getButton() == MouseEvent.BUTTON3) {
-         if (imageIndex == 0)
-            imageIndex = backgroundImages.length - 1;
-         else
-            imageIndex--;
-      }
+   public void incrementImageIndex() {
+      imageIndex++;
    }
 
-   public void mouseReleased(MouseEvent e) {
-
+   public void decrementImageIndex() {
+      imageIndex--;
    }
 
-   public void mouseEntered(MouseEvent e) {
-
-   }
-
-   public void mouseExited(MouseEvent e) {
-
+   public Image[] getBackgroundImages() {
+      return backgroundImages;
    }
 }
 
