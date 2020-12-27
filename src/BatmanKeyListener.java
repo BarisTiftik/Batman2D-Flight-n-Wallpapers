@@ -6,10 +6,7 @@ public class BatmanKeyListener implements KeyListener {
     Object object;
 
     public BatmanKeyListener(Object object) {
-        if (object instanceof Batman)
-            this.object = (Batman)object;
-        else if (object instanceof MainFrame)
-            this.object = (MainFrame)object;
+        this.object = object;
     }
 
     @Override
