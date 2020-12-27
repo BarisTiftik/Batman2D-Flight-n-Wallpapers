@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Batman-2D-Free-Flight-Simulator:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Batman_2D_Free_Flight_Simulator_jar</output-path>
+    <root id="archive" name="Batman-2D-Free-Flight-Simulator.jar">
+      <element id="module-output" name="Batman2D-Flight-&amp;-Wallpapers" />
+    </root>
+  </artifact>
+</component>
