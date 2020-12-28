@@ -1,7 +1,5 @@
-import javax.swing.*;
 import javax.swing.event.MouseInputListener;
 import java.awt.event.MouseEvent;
-import java.security.PublicKey;
 
 public class BatmanMouseInputListener implements MouseInputListener {
 
