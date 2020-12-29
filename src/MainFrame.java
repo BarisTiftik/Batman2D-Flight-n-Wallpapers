@@ -16,11 +16,15 @@ public class MainFrame extends JFrame implements ActionListener {
     private MouseInputListener mouseInputListener;
 
     public MainFrame() {
+
         setLayout(new BorderLayout());
+
         initializeListeners();
-        addListeners();
         wallpaperPanel = new WallpaperPanel();
         add(mainPanel, BorderLayout.CENTER);
+
+        addListeners();
+
         adjustMainFrameSettings();
     }
 
@@ -64,6 +68,12 @@ public class MainFrame extends JFrame implements ActionListener {
     public JPanel getMainPanel() {
         return mainPanel;
     }
+
+    /*private void createUIComponents() {
+        // TODO: place custom component creation code here
+        infoLabel = new JLabel();
+
+    }*/
 
     public JLabel getInfoLabel() {
         return infoLabel;
