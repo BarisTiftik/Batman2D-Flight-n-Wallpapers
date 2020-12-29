@@ -69,12 +69,6 @@ public class MainFrame extends JFrame implements ActionListener {
         return mainPanel;
     }
 
-    /*private void createUIComponents() {
-        // TODO: place custom component creation code here
-        infoLabel = new JLabel();
-
-    }*/
-
     public JLabel getInfoLabel() {
         return infoLabel;
     }
