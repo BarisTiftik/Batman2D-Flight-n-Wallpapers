@@ -16,19 +16,24 @@ public class MainFrame extends JFrame implements ActionListener {
     private MouseInputListener mouseInputListener;
 
     public MainFrame() {
-
         setLayout(new BorderLayout());
-
-        keyListener = new BatmanKeyListener(this);
-        mouseInputListener = new BatmanMouseInputListener(this);
+        initializeListeners();
+        addListeners();
         wallpaperPanel = new WallpaperPanel();
         add(mainPanel, BorderLayout.CENTER);
+        adjustMainFrameSettings();
+    }
 
+    private void addListeners() {
         freeFlightButton.addActionListener(this);
         exitButton.addActionListener(this);
         wallpaperPanel.addKeyListener(keyListener);
+        infoLabel.addMouseListener(mouseInputListener);
+    }
 
-        adjustMainFrameSettings();
+    private void initializeListeners() {
+        keyListener = new BatmanKeyListener(this);
+        mouseInputListener = new BatmanMouseInputListener(this);
     }
 
     public void adjustMainFrameSettings()
@@ -58,44 +63,6 @@ public class MainFrame extends JFrame implements ActionListener {
 
     public JPanel getMainPanel() {
         return mainPanel;
-    }
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-        infoLabel = new JLabel();
-        infoLabel.addMouseListener(mouseInputListener);
-        infoLabel.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                JOptionPane.showMessageDialog(new JFrame(), "Batman 2D Free Flight Simulator!\n" +
-                                                                    "Left Click to go ahead!\n" +
-                                                                    "Right Click to back down!\n" +
-                                                                    "Find out what arrow keys do!\n" +
-                                                                    "Press 'W' to speed up! , Press 'S' to slow down!\n" +
-                                                                    "To go back to the main menu: Just Simply press the back_space key!");
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
-        });
-
     }
 
     public JLabel getInfoLabel() {

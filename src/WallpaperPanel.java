@@ -3,8 +3,7 @@ import javax.swing.event.MouseInputListener;
 import java.awt.*;
 import java.awt.event.*;
 
-public class WallpaperPanel extends JPanel implements ActionListener
-{
+public class WallpaperPanel extends JPanel implements ActionListener {
    // properties
    private final int IMAGE_COUNT = 11;
 
@@ -17,8 +16,7 @@ public class WallpaperPanel extends JPanel implements ActionListener
    private MouseInputListener mouseInputListener;
    
    // constructors
-   public WallpaperPanel()
-   {       
+   public WallpaperPanel() {
       batman = new Batman();
       backgroundImages = new Image[IMAGE_COUNT];
       imageIndex = 0;
@@ -39,8 +37,7 @@ public class WallpaperPanel extends JPanel implements ActionListener
    }
 
    // methods
-   public void paintComponent( Graphics g)
-   {    
+   public void paintComponent( Graphics g) {
       super.paintComponent(g);
 
       g.drawImage(backgroundImages[imageIndex], 0, 0, MainFrame.SCREEN_WIDTH, MainFrame.SCREEN_HEIGHT, null);
@@ -49,8 +46,7 @@ public class WallpaperPanel extends JPanel implements ActionListener
                   batman.getBatmanImage().getWidth(null), batman.getBatmanImage().getHeight(null), null );
    }
    
-   public void actionPerformed( ActionEvent e )
-   {
+   public void actionPerformed( ActionEvent e ) {
       batman.move();
       repaint();
    }

@@ -1,7 +1,6 @@
 import java.awt.*;
 
-public class Batman 
-{  
+public class Batman {
    // properties
    private Point[] vectors;
    private Point location;
@@ -10,8 +9,7 @@ public class Batman
    private int speed;
 
    // constructors
-   public Batman()
-   {          
+   public Batman() {
       speed = 25;
       
       location = new Point();
@@ -28,30 +26,25 @@ public class Batman
    }
    
    // get methods
-   public Image getBatmanImage()
-   {
+   public Image getBatmanImage() {
       return batmanImage;
    }
    
-   public Point getBatmanLocation()
-   {
+   public Point getBatmanLocation() {
       return location;
    }
    
    // move method  
-   public void move()
-   {
+   public void move() {
       location.translate( velocity.x, velocity.y );
    }
    
    // set methods   
-   public void setBatmanLocation( int newX, int newY )
-   {
+   public void setBatmanLocation( int newX, int newY ) {
       location.setLocation( newX, newY );
    }
    
-   public void addVelocity(int d)
-   {      
+   public void addVelocity(int d) {
       velocity.setLocation( vectors[d] );
    }
 
@@ -71,8 +64,7 @@ public class Batman
       vectors = new Point[]{ new Point( -newSpeed, 0 ), new Point( 0, -newSpeed ), new Point( newSpeed, 0 ), new Point( 0, newSpeed ) };
    }
    
-   public void stop() 
-   {
+   public void stop() {
       velocity.setLocation( 0, 0);
    }
 }
