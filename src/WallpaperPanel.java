@@ -37,6 +37,7 @@ public class WallpaperPanel extends JPanel implements ActionListener {
    }
 
    // methods
+   @Override
    public void paintComponent( Graphics g) {
       super.paintComponent(g);
 
@@ -45,7 +46,8 @@ public class WallpaperPanel extends JPanel implements ActionListener {
       g.drawImage( batman.getBatmanImage(), batman.getBatmanLocation().x, batman.getBatmanLocation().y,
                   batman.getBatmanImage().getWidth(null), batman.getBatmanImage().getHeight(null), null );
    }
-   
+
+   @Override
    public void actionPerformed( ActionEvent e ) {
       batman.move();
       repaint();

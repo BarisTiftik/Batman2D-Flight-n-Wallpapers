@@ -10,18 +10,21 @@ public class BatmanMouseInputListener implements MouseInputListener {
         this.object = object;
     }
 
+    @Override
     public void mouseMoved( MouseEvent e ) {
         if (object instanceof WallpaperPanel)
             ((WallpaperPanel) object).getBatman().setBatmanLocation( e.getX() - ( ((WallpaperPanel) object).getBatman().getBatmanImage().getWidth(null) / 2 ),
                     e.getY() - ( ((WallpaperPanel) object).getBatman().getBatmanImage().getHeight(null) / 2 ) );
     }
 
+    @Override
     public void mouseDragged(MouseEvent e) {
         if (object instanceof WallpaperPanel)
             ((WallpaperPanel) object).getBatman().setBatmanLocation( e.getX() - ( ((WallpaperPanel) object).getBatman().getBatmanImage().getWidth(null) / 2 ),
                     e.getY() - ( ((WallpaperPanel) object).getBatman().getBatmanImage().getHeight(null) / 2 ) );
     }
 
+    @Override
     public void mouseClicked(MouseEvent e) {
         if (object instanceof MainFrame) {
             if ( e.getSource() == ((MainFrame) object).getInfoLabel() ) {
@@ -35,6 +38,7 @@ public class BatmanMouseInputListener implements MouseInputListener {
         }
     }
 
+    @Override
     public void mousePressed(MouseEvent e) {
         if (e.getButton() == MouseEvent.BUTTON1) {
             if (object instanceof WallpaperPanel) {
@@ -54,14 +58,17 @@ public class BatmanMouseInputListener implements MouseInputListener {
         }
     }
 
+    @Override
     public void mouseReleased(MouseEvent e) {
 
     }
 
+    @Override
     public void mouseEntered(MouseEvent e) {
 
     }
 
+    @Override
     public void mouseExited(MouseEvent e) {
 
     }
