@@ -12,16 +12,16 @@ public class BatmanMouseInputListener implements MouseInputListener {
 
     @Override
     public void mouseMoved( MouseEvent e ) {
-        if (object instanceof WallpaperPanel)
-            ((WallpaperPanel) object).getBatman().setBatmanLocation( e.getX() - ( ((WallpaperPanel) object).getBatman().getBatmanImage().getWidth(null) / 2 ),
-                    e.getY() - ( ((WallpaperPanel) object).getBatman().getBatmanImage().getHeight(null) / 2 ) );
+        if (object instanceof FlightPanel)
+            ((FlightPanel) object).getBatman().setBatmanLocation( e.getX() - ( ((FlightPanel) object).getBatman().getBatmanImage().getWidth(null) / 2 ),
+                    e.getY() - ( ((FlightPanel) object).getBatman().getBatmanImage().getHeight(null) / 2 ) );
     }
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        if (object instanceof WallpaperPanel)
-            ((WallpaperPanel) object).getBatman().setBatmanLocation( e.getX() - ( ((WallpaperPanel) object).getBatman().getBatmanImage().getWidth(null) / 2 ),
-                    e.getY() - ( ((WallpaperPanel) object).getBatman().getBatmanImage().getHeight(null) / 2 ) );
+        if (object instanceof FlightPanel)
+            ((FlightPanel) object).getBatman().setBatmanLocation( e.getX() - ( ((FlightPanel) object).getBatman().getBatmanImage().getWidth(null) / 2 ),
+                    e.getY() - ( ((FlightPanel) object).getBatman().getBatmanImage().getHeight(null) / 2 ) );
     }
 
     @Override
@@ -41,19 +41,19 @@ public class BatmanMouseInputListener implements MouseInputListener {
     @Override
     public void mousePressed(MouseEvent e) {
         if (e.getButton() == MouseEvent.BUTTON1) {
-            if (object instanceof WallpaperPanel) {
-                if (((WallpaperPanel) object).getImageIndex() == ((WallpaperPanel) object).getBackgroundImages().length - 1)
-                    ((WallpaperPanel) object).resetImageIndex();
+            if (object instanceof FlightPanel) {
+                if (((FlightPanel) object).getImageIndex() == ((FlightPanel) object).getBackgroundImages().length - 1)
+                    ((FlightPanel) object).resetImageIndex();
                 else
-                    ((WallpaperPanel) object).incrementImageIndex();
+                    ((FlightPanel) object).incrementImageIndex();
             }
         }
         else if (e.getButton() == MouseEvent.BUTTON3) {
-            if (object instanceof WallpaperPanel) {
-                if (((WallpaperPanel) object).getImageIndex() == 0)
-                    ((WallpaperPanel) object).resetImageIndex();
+            if (object instanceof FlightPanel) {
+                if (((FlightPanel) object).getImageIndex() == 0)
+                    ((FlightPanel) object).resetImageIndex();
                 else
-                    ((WallpaperPanel) object).decrementImageIndex();
+                    ((FlightPanel) object).decrementImageIndex();
             }
         }
     }

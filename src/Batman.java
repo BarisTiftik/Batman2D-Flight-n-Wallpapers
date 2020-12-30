@@ -21,7 +21,7 @@ public class Batman {
    }
    
    // methods   
-   public void constructBatmanImage() {
+   private void constructBatmanImage() {
       batmanImage = Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("batman2.png"));
    }
    

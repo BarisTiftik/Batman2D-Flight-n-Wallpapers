@@ -29,7 +29,7 @@ public class BatmanKeyListener implements KeyListener {
         else if (object instanceof MainFrame) {
             if (keyKode == KeyEvent.VK_BACK_SPACE) {
                 ((MainFrame)object).setVisible(false);
-                ((MainFrame)object).remove(((MainFrame) object).getWallpaperPanel());
+                ((MainFrame)object).remove(((MainFrame) object).getFlightPanel());
                 ((MainFrame)object).add(((MainFrame) object).getMainPanel());
                 ((MainFrame)object).setVisible(true);
             }

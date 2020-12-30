@@ -1,6 +1,6 @@
-public class BatmanGame {
+public class BatmanFlight {
    // methods
-   public void openGame() {
+   public void startFlight() {
       MainFrame mainFrame = new MainFrame();
    }
 }

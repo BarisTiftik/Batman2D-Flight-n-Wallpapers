@@ -8,7 +8,7 @@ public class MainFrame extends JFrame implements ActionListener {
     public static final int SCREEN_HEIGHT = 900;
 
     private JPanel mainPanel;
-    private JPanel wallpaperPanel;
+    private JPanel flightPanel;
     private JButton freeFlightButton;
     private JButton exitButton;
     private JLabel infoLabel;
@@ -20,7 +20,7 @@ public class MainFrame extends JFrame implements ActionListener {
         setLayout(new BorderLayout());
 
         initializeListeners();
-        wallpaperPanel = new WallpaperPanel();
+        flightPanel = new FlightPanel();
         add(mainPanel, BorderLayout.CENTER);
 
         addListeners();
@@ -31,7 +31,7 @@ public class MainFrame extends JFrame implements ActionListener {
     private void addListeners() {
         freeFlightButton.addActionListener(this);
         exitButton.addActionListener(this);
-        wallpaperPanel.addKeyListener(keyListener);
+        flightPanel.addKeyListener(keyListener);
         infoLabel.addMouseListener(mouseInputListener);
     }
 
@@ -53,7 +53,7 @@ public class MainFrame extends JFrame implements ActionListener {
         if (e.getSource() == freeFlightButton) {
             setVisible(false);
             remove(mainPanel);
-            add(wallpaperPanel);
+            add(flightPanel);
             repaint();
             setVisible(true);
         }
@@ -61,8 +61,8 @@ public class MainFrame extends JFrame implements ActionListener {
             System.exit(0);
     }
 
-    public JPanel getWallpaperPanel() {
-        return wallpaperPanel;
+    public JPanel getFlightPanel() {
+        return flightPanel;
     }
 
     public JPanel getMainPanel() {
