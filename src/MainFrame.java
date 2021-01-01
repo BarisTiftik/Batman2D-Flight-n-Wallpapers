@@ -1,6 +1,5 @@
 import javax.swing.*;
 import javax.swing.event.MouseInputListener;
-import java.awt.*;
 import java.awt.event.*;
 
 public class MainFrame extends JFrame implements ActionListener {
@@ -16,21 +15,18 @@ public class MainFrame extends JFrame implements ActionListener {
     private MouseInputListener mouseInputListener;
 
     public MainFrame() {
-
-        setLayout(new BorderLayout());
-
         initializeListeners();
         flightPanel = new FlightPanel();
-        add(mainPanel, BorderLayout.CENTER);
-
+        mainPanel.setFocusable(true);
+        add(mainPanel);
         addListeners();
-
         adjustMainFrameSettings();
     }
 
     private void addListeners() {
         freeFlightButton.addActionListener(this);
         exitButton.addActionListener(this);
+        mainPanel.addKeyListener(keyListener);
         flightPanel.addKeyListener(keyListener);
         infoLabel.addMouseListener(mouseInputListener);
     }
@@ -54,7 +50,6 @@ public class MainFrame extends JFrame implements ActionListener {
             setVisible(false);
             remove(mainPanel);
             add(flightPanel);
-            repaint();
             setVisible(true);
         }
         else if (e.getSource() == exitButton)

@@ -1,5 +1,6 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Arrays;
 
 public class BatmanKeyListener implements KeyListener {
 
@@ -28,10 +29,14 @@ public class BatmanKeyListener implements KeyListener {
         }
         else if (object instanceof MainFrame) {
             if (keyKode == KeyEvent.VK_BACK_SPACE) {
-                ((MainFrame)object).setVisible(false);
-                ((MainFrame)object).remove(((MainFrame) object).getFlightPanel());
-                ((MainFrame)object).add(((MainFrame) object).getMainPanel());
-                ((MainFrame)object).setVisible(true);
+                if (((MainFrame) object).getFlightPanel().isDisplayable()) {
+                    ((MainFrame) object).setVisible(false);
+                    ((MainFrame) object).remove(((MainFrame) object).getFlightPanel());
+                    ((MainFrame) object).add(((MainFrame) object).getMainPanel());
+                    ((MainFrame) object).setVisible(true);
+                }
+                else if (((MainFrame) object).getMainPanel().isDisplayable())
+                    System.exit(0);
             }
         }
     }
