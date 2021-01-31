@@ -33,7 +33,7 @@ public class BatmanMouseInputListener implements MouseInputListener {
                                                                     "Right Click to back down!\n" +
                                                                     "Find out what arrow keys do!\n" +
                                                                     "Press 'W' to speed up! , Press 'S' to slow down!\n" +
-                                                                    "To go back to the main menu: Just Simply press the back_space key!");
+                                                                    "To go back to the main menu: Just Simply press the ESCAPE key!");
             }
         }
     }

@@ -1,6 +1,6 @@
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Arrays;
 
 public class BatmanKeyListener implements KeyListener {
 
@@ -18,17 +18,29 @@ public class BatmanKeyListener implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int keyKode = e.getKeyCode();
+
         if (object instanceof Batman) {
-            if (keyKode >= 37 && keyKode <= 40)
-                ((Batman) object).addVelocity(keyKode - 37); // 37, 38, 39, 40 is respectively LEFT, UP, RIGHT, DOWN
+            boolean checkLeft = ((Batman) object).getBatmanLocation().getX() > -55;
+            boolean checkUp = ((Batman) object).getBatmanLocation().getY() > -90;
+            boolean checkRight = ((Batman) object).getBatmanLocation().getX() < MainFrame.SCREEN_WIDTH - 210;
+            boolean checkDown = ((Batman) object).getBatmanLocation().getY() < MainFrame.SCREEN_HEIGHT - 200;
+
+            if (keyKode == KeyEvent.VK_LEFT && checkLeft)
+                ((Batman) object).setVelX(-((Batman) object).getSpeed());
+            if (keyKode == KeyEvent.VK_UP && checkUp)
+                ((Batman) object).setVelY(-((Batman) object).getSpeed());
+            if (keyKode == KeyEvent.VK_RIGHT && checkRight)
+                ((Batman) object).setVelX(((Batman) object).getSpeed());
+            if (keyKode == KeyEvent.VK_DOWN && checkDown)
+                ((Batman) object).setVelY(((Batman) object).getSpeed());
 
             if (keyKode == KeyEvent.VK_W)
                 ((Batman) object).incrementSpeed();
-            else if (keyKode == KeyEvent.VK_S)
+            if (keyKode == KeyEvent.VK_S)
                 ((Batman) object).decrementSpeed();
         }
         else if (object instanceof MainFrame) {
-            if (keyKode == KeyEvent.VK_BACK_SPACE) {
+            if (keyKode == KeyEvent.VK_ESCAPE) {
                 if (((MainFrame) object).getFlightPanel().isDisplayable()) {
                     ((MainFrame) object).setVisible(false);
                     ((MainFrame) object).remove(((MainFrame) object).getFlightPanel());
@@ -43,7 +55,16 @@ public class BatmanKeyListener implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if (object instanceof Batman)
-            ((Batman) object).stop();
+        int keyKode = e.getKeyCode();
+        if (object instanceof Batman) {
+            if (keyKode == KeyEvent.VK_LEFT)
+                ((Batman) object).setVelX(0);
+            if (keyKode == KeyEvent.VK_UP)
+                ((Batman) object).setVelY(0);
+            if (keyKode == KeyEvent.VK_RIGHT)
+                ((Batman) object).setVelX(0);
+            if (keyKode == KeyEvent.VK_DOWN)
+                ((Batman) object).setVelY(0);
+        }
     }
 }

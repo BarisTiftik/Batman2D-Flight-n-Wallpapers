@@ -2,7 +2,6 @@ import java.awt.*;
 
 public class Batman {
    // properties
-   private Point[] vectors;
    private Point location;
    private Point velocity;
    private Image batmanImage;
@@ -10,22 +9,44 @@ public class Batman {
 
    // constructors
    public Batman() {
-      speed = 25;
+      speed = 20;
       
       location = new Point();
       velocity = new Point();
-      
-      vectors = new Point[]{ new Point( -speed, 0 ), new Point( 0, -speed ), new Point( speed, 0 ), new Point( 0, speed ) };
-         
-      constructBatmanImage();                    
-   }
-   
-   // methods   
-   private void constructBatmanImage() {
+
       batmanImage = Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("batman2.png"));
    }
    
+   // methods
+   public void incrementSpeed() {
+      if( speed <= 30 )
+         speed = speed + 5;
+   }
+
+   public void decrementSpeed() {
+      if( speed >= 5 )
+         speed = speed - 5;
+   }
+
+   // move method
+   public void move() {
+      location.translate( velocity.x, velocity.y );
+
+      if (location.x <= -55)
+         velocity.x = 0;
+      if (location.y <= -90)
+         velocity.y = 0;
+      if (location.x >= MainFrame.SCREEN_WIDTH - 210)
+         velocity.x = 0;
+      if (location.y >= MainFrame.SCREEN_HEIGHT - 200)
+         velocity.y = 0;
+   }
+
    // get methods
+   public int getSpeed() {
+      return speed;
+   }
+
    public Image getBatmanImage() {
       return batmanImage;
    }
@@ -33,38 +54,17 @@ public class Batman {
    public Point getBatmanLocation() {
       return location;
    }
-   
-   // move method  
-   public void move() {
-      location.translate( velocity.x, velocity.y );
-   }
-   
+
    // set methods   
    public void setBatmanLocation( int newX, int newY ) {
       location.setLocation( newX, newY );
    }
-   
-   public void addVelocity(int d) {
-      velocity.setLocation( vectors[d] );
+
+   public void setVelX(int x) {
+      velocity.x = x;
    }
 
-   public void incrementSpeed() {
-      if( speed <= 45 )
-         speed = speed + 5;
-      updateVectors(speed);
-   }
-
-   public void decrementSpeed() {
-      if( speed >= 5 )
-         speed = speed - 5;
-      updateVectors(speed);
-   }
-
-   public void updateVectors(int newSpeed) {
-      vectors = new Point[]{ new Point( -newSpeed, 0 ), new Point( 0, -newSpeed ), new Point( newSpeed, 0 ), new Point( 0, newSpeed ) };
-   }
-   
-   public void stop() {
-      velocity.setLocation( 0, 0);
+   public void setVelY(int y) {
+      velocity.y = y;
    }
 }

@@ -19,7 +19,7 @@ public class FlightPanel extends JPanel implements ActionListener {
    public FlightPanel() {
       batman = new Batman();
       backgroundImages = new Image[IMAGE_COUNT];
-      imageIndex = 0;
+      imageIndex = 3;
       keyListener = new BatmanKeyListener(batman);
       mouseInputListener = new BatmanMouseInputListener(this);
 

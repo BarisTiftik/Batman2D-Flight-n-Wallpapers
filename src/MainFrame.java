@@ -41,6 +41,8 @@ public class MainFrame extends JFrame implements ActionListener {
         setTitle( "Batman2D" );
         setBounds( 55, 70, SCREEN_WIDTH, SCREEN_HEIGHT );
         setVisible( true );
+        setResizable(false);
+
         setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
     }
 
